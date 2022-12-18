@@ -1,0 +1,27 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&display=swap');
+
+    body{
+	background: linear-gradient(90deg, #4d35d3, #222125);
+    color: white;
+    font-family: 'Lato', sans-serif;
+    }
+    a{
+        color: white;
+        font-size: 1.1rem;
+    }
+    a:hover{
+        color: rgba(255, 255, 255, 0.7);
+    }
+</style>
+<div class="container">
+    <h2>You have been logged out!</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a href="{% url 'login' %}">Log in again</a>
+        </small>
+    </div>
+</div>
+{% endblock content %}

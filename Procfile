@@ -1,0 +1,1 @@
+web: gunicorn agents_profiles.wsgi --log-file -

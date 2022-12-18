@@ -1,0 +1,67 @@
+{% extends 'users/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&display=swap');
+    body{
+	background: linear-gradient(90deg, #4d35d3, #222125);
+    color: white;
+    font-family: 'Lato', sans-serif;
+    }
+    a{
+        color: white;
+        font-size: 16px;
+    }
+    a:hover{
+        color: beige;
+    }
+    form {
+    position: relative;
+    inset: 2px;
+    border-radius: 8px;
+    background: #536094;
+    z-index: 10;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+
+}
+    
+</style>
+    {% if name.fullname %}
+    <div class="container">
+        <div class="register-section mt-5">
+            <p>Your Polling Station: <strong>{{name.pollingStation}}</strong>.</p>
+        </div>
+        <form method="POST" >
+            {% csrf_token %}
+            <input type="hidden" name="ward" value="{{name.ward}}">
+            <input type="hidden" name="pollingStation" value="{{name.pollingStation}}">
+            <label>Registered Voters</label>
+            <input type="text" name="registerdVoters"><br>
+            <label>Rejected Votes</label>
+            <input type="text" name="rejected"><br>
+            <label>Rejected Objected Votes</label>
+            <input type="text" name="rejectedObj"><br>
+            <label>Disputed Votes</label>
+            <input type="text" name="disputed"><br>
+            <label>Valid Votes</label>
+            <input type="text" name="valid"><br>
+            <label>Jofle</label>
+            <input type="text" name="jofle"><br>
+            <label>Major Dekow</label>
+            <input type="text" name="dekow"><br>
+            <label>Osman</label>
+            <input type="text" name="osman"><br>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    {%else%}
+    <div class="container">
+    <a href="{% url 'profile' %}">Click Here to Update your profile</a>
+</div>
+    {%endif%}
+{% endblock content %}
