@@ -27,8 +27,8 @@ SECRET_KEY = 'django-insecure-1g&mc9_9e@eraa-33%+gax1vws=qt)gj-lab(tl_0jrd5+yusf
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
-
+#https://web-production-5311.up.railway.app/
+CSRF_TRUSTED_ORIGINS = ['https://web-production-5311.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,11 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'users',
     'crispy_forms',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
