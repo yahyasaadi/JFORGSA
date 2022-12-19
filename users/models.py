@@ -4,11 +4,14 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+STREAMS = [('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6')]
 AGENT_ROLE = [('pollingAgent', 'Polling Agent'), ('chiefAgent', 'Chief Agent')]
+WARDS = [('galbet','GALBET'),('waberi','WABERI'),('iftin','IFTIN'),('township','TOWNSHIP')]
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    ward = models.CharField(max_length=50)
+    ward = models.CharField(max_length=50,choices=WARDS)
     pollingStation = models.CharField(max_length=50)
+    stream = models.CharField( max_length=50, choices=STREAMS, null=True)
     phone = models.CharField(max_length=50)
     fullname = models.CharField(max_length=50)
     id_number = models.CharField(max_length=50)
@@ -23,6 +26,7 @@ class Profile(models.Model):
 class Vote(models.Model):
     pollingStation = models.CharField(max_length=200)
     ward = models.CharField(max_length=200)
+    stream = models.CharField(max_length=50,null=True)
     registerdVoters = models.IntegerField()
     rejected = models.IntegerField()
     rejectedObj = models.IntegerField()

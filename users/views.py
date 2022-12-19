@@ -18,6 +18,7 @@ def home(request):
     if request.method == 'POST':
         ward = request.POST['ward']
         pollingStation = request.POST['pollingStation']
+        stream = request.POST['stream']
         registerdVoters = request.POST['registerdVoters']
         rejected = request.POST['rejected']
         rejectedObj = request.POST['rejectedObj']
@@ -27,7 +28,7 @@ def home(request):
         dekow = request.POST['dekow']
         osman = request.POST['osman']
         # print(ward, pollingStation, valid, osman)
-        new_vote = Vote(ward=ward, pollingStation=pollingStation, registerdVoters=registerdVoters, rejected=rejected,
+        new_vote = Vote(ward=ward, pollingStation=pollingStation,stream=stream, registerdVoters=registerdVoters, rejected=rejected,
                         rejectedObj=rejectedObj, disputed=disputed, valid=valid, jofle=jofle, major=dekow, osman=osman,suleiman=0)
         new_vote.save()
         
@@ -49,7 +50,7 @@ def home(request):
         data = {
             'time':time.ctime(),
             'ward': ward,
-            'pollingStation': pollingStation,
+            'pollingStation': (pollingStation+stream),
             'registerdVoters': registerdVoters,
             'rejected': rejected,
             'rejectedObj': rejectedObj,
@@ -61,9 +62,9 @@ def home(request):
         }
         
         if name.role == 'pollingAgent':
-            result = db.child('votes').child(pollingStation).set(data)
+            result = db.child('votes').child(pollingStation+stream).set(data)
         else:
-            result = db.child('chiefAgents').child(pollingStation).set(data)
+            result = db.child('chiefAgents').child(pollingStation+stream).set(data)
             
         # result = firebase.database().ref(f"votes/{pollingStation}").setValue(data)
 

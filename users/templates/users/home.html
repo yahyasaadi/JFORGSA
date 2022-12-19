@@ -32,12 +32,13 @@
     {% if name.fullname %}
     <div class="container">
         <div class="register-section mt-5">
-            <p>Your Polling Station: <strong>{{name.pollingStation}}</strong>.</p>
+            <p style='margin-top:-10px;font-size:14px;' > Dear {{name.fullname}}, Your Polling Station is <strong>{{name.pollingStation}} and Stream: {{name.stream}}</strong>.</p>
         </div>
         <form method="POST" >
             {% csrf_token %}
             <input type="hidden" name="ward" value="{{name.ward}}">
             <input type="hidden" name="pollingStation" value="{{name.pollingStation}}">
+            <input type="hidden" name="stream" value="{{name.stream}}">
             <label>Registered Voters</label>
             <input type="text" name="registerdVoters"><br>
             <label>Rejected Votes</label>

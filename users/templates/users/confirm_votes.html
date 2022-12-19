@@ -112,26 +112,51 @@
     position: absolute;
     margin-top: -400px;
   }
+  @media screen and (min-width: 480px) {
+    body {
+     
+      font-size:16px;
+    }
+    .title{
+      margin-top:-800px;
+    }
+    .title p{
+      font-size:36px;
+    }
+    .form{
+      font-size:36px;
+    }
+    .inputs{
+      zoom: 1.8;
+    }
+    button{
+      margin:2px 2px;
+      zoom:1.4;
+    }
+    
+  }
     </style>
 </head>
 <body>
-  <p id="pollingStation" style="visibility:hidden;">{{name.pollingStation}}</p>
-<div class="title">Upload Form 35A for {{name.pollingStation}}</div>
+  <p id="pollingStation" style="visibility:hidden;position:absolute;">{{name.pollingStation}}</p>
+  <p id="stream" style="visibility:hidden;position:absolute;">{{name.stream}}</p>
+<div class="title"><p>Upload Form 35A for {{name.pollingStation}} : {{name.stream}}</p> </div>
 
-<form action="/postcreate/" method="post">
+<form action="/postcreate/" method="post" class='form'>
 
     {% csrf_token %}    
-    Document Upload:
-    <div class="">
+    <div class="inputs">
         <input type="file" name="files[]" id="files">
         <input type="hidden" name="url" id="url">
-        <button type="button" onclick="uploadimage()">Upload</button><br><br>
+        <button type="button" onclick="uploadimage()">Submit</button><br><br>
 </div>
 </form>
 </body>
 <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 <script>
     var pollingStation = document.getElementById("pollingStation").innerHTML
+    var stream = document.getElementById("stream").innerHTML
+    pollingStation = pollingStation+stream
     console.log(pollingStation)
     const firebaseConfig = {
       apiKey: "AIzaSyCqMdmrITPM8x4PdMqP5T9Hcmmj5IJPH6M",

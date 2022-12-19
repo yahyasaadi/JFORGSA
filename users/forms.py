@@ -17,7 +17,7 @@ class UserRegisterForm(UserCreationForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['ward', 'pollingStation', 'phone', 'fullname', 'id_number', 'role']
+        fields = ['ward', 'pollingStation','stream', 'phone', 'fullname', 'id_number', 'role']
         
         
 
