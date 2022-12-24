@@ -135,9 +135,21 @@
     }
     
   }
+  .home{
+    visibility: hidden;
+    position: absolute;
+    margin: 40px;
+    top: 20px;
+  }
+  .home a{
+    font-size: 24px;
+    text-decoration: none;
+    cursor: pointer;
+  }
     </style>
 </head>
 <body>
+    <div class="img" id="img">
   <p id="pollingStation" style="visibility:hidden;position:absolute;">{{name.pollingStation}}</p>
   <p id="stream" style="visibility:hidden;position:absolute;">{{name.stream}}</p>
 <div class="title"><p>Upload Form 35A for {{name.pollingStation}} : {{name.stream}}</p> </div>
@@ -151,6 +163,10 @@
         <button type="button" onclick="uploadimage()">Submit</button><br><br>
 </div>
 </form>
+</div>
+<div class="home" id="home">
+    <a style="color:black;" href="{% url 'home' %}">View Data Submitted</a>
+</div>
 </body>
 <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 <script>
@@ -187,7 +203,8 @@
     console.log('File available at', downloadURL);
     document.getElementById("url").value=downloadURL;
     alert('uploaded successfully');
-    window.location.href = "localhost:8000";
+    document.getElementById('img').style.visibility = "hidden";
+    document.getElementById('home').style.visibility = "visible";
   });
 });
 }

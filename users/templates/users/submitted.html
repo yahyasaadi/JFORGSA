@@ -1,0 +1,95 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+
+<style>
+	body {
+  margin: 0;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table td,
+.table th {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 16px;
+}
+</style>
+<table class="table">
+  <tbody>
+{% for v in vote%}
+<tr>
+	<td data-label="S.No">Ward</td>
+    <td data-label="Name">{{v.ward}}</td>
+</tr>
+
+<tr>
+    <td data-label="S.No">Polling Station</td>
+    <td data-label="Name">{{v.pollingStation}}</td>
+</tr>
+<tr>
+    <td data-label="S.No">Stream</td>
+    <td data-label="Name">{{v.stream}}</td>
+</tr>
+<tr>
+    <td data-label="S.No">Registered Voters</td>
+    <td data-label="Name">{{v.registerdVoters}}</td>
+</tr>
+<tr>
+    <td data-label="S.No">Rejected Votes</td>
+    <td data-label="Name">{{v.rejected}}</td>
+</tr>
+<tr>
+    <td data-label="S.No">Rejected Objected</td>
+    <td data-label="Name">{{v.rejectedObj}}</td>
+</tr>
+<tr>
+    <td data-label="S.No">Disputed Votes</td>
+    <td data-label="Name">{{v.disputed}}</td>
+</tr>
+<tr>
+    <td data-label="S.No">Valid Votes Cast</td>
+    <td data-label="Name">{{v.valid}}</td>
+</tr>
+<tr>
+    <td data-label="S.No">Hon. Nassir Dolal</td>
+    <td data-label="Name">{{v.jofle}}</td>
+</tr>
+<tr>
+    <td data-label="S.No">Hon. Dekow Barrow</td>
+    <td data-label="Name">{{v.major}}</td>
+</tr>
+<tr>
+    <td data-label="S.No">Hon. Ibrahim Malow</td>
+    <td data-label="Name">{{v.malow}}</td>
+</tr>
+<tr>
+    <td data-label="S.No">Hon. Abdikarim Rati</td>
+    <td data-label="Name">{{v.osman}}</td>
+</tr>
+<tr>
+    <td data-label="S.No">Hon. Abdifeisal Amin</td>
+    <td data-label="Name">{{v.feisal}}</td>
+</tr>
+<tr>
+    <td data-label="S.No">Hon. Muhiadin Abdirashid</td>
+    <td data-label="Name">{{v.muhiadin}}</td>
+</tr>
+</tbody>
+</table>
+<h3>Submitted by <strong>{{v.sender_username}}</strong></h3>
+{%endfor%}
+{% endblock content %}
+
+

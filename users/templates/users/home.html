@@ -37,6 +37,7 @@
         <form method="POST" >
             {% csrf_token %}
             <input type="hidden" name="ward" value="{{name.ward}}">
+            <input type="hidden" name="sender_username" value="{{name.user.username}}">
             <input type="hidden" name="pollingStation" value="{{name.pollingStation}}">
             <input type="hidden" name="stream" value="{{name.stream}}">
             <label>Registered Voters</label>
@@ -49,12 +50,18 @@
             <input type="text" name="disputed"><br>
             <label>Valid Votes</label>
             <input type="text" name="valid"><br>
-            <label>Jofle</label>
+            <label>Hon. Nassir Dolal</label>
             <input type="text" name="jofle"><br>
-            <label>Major Dekow</label>
+            <label>Hon. Dekow Barrow</label>
             <input type="text" name="dekow"><br>
-            <label>Osman</label>
+            <label>Hon. Abdikarim Osman</label>
             <input type="text" name="osman"><br>
+            <label>Hon. Abdifeisal Amin</label>
+            <input type="text" name="feisal"><br>
+            <label>Hon. Ibrahim Malow</label>
+            <input type="text" name="malow"><br>
+            <label>Hon. Muhiadin Abdirashid</label>
+            <input type="text" name="muhiadin"><br>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Submit</button>
             </div>
