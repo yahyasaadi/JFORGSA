@@ -40,17 +40,15 @@ def home(request):
             new_vote = Vote(sender_username=sender_username,ward=ward, pollingStation=pollingStation,stream=stream, registerdVoters=registerdVoters, rejected=rejected,
                             rejectedObj=rejectedObj, disputed=disputed, valid=valid, jofle=jofle, major=dekow, osman=osman,feisal=feisal,muhiadin=muhiadin,malow=malow)
             new_vote.save()
-            
             firebaseConfig = {
-                'apiKey': "AIzaSyCqMdmrITPM8x4PdMqP5T9Hcmmj5IJPH6M",
-                'authDomain': "demoapp-607db.firebaseapp.com",
-                'databaseURL': "https://demoapp-607db-default-rtdb.asia-southeast1.firebasedatabase.app",
-                'projectId': "demoapp-607db",
-                'storageBucket': "demoapp-607db.appspot.com",
-                'messagingSenderId': "641799333572",
-                'appId': "1:641799333572:web:fd402ab5271f9fa4d6cb91",
-                'measurementId': "G-KPVXQKZ7KK"
-                # "serviceAccount":"serviceAccount.json"
+                "apiKey": "AIzaSyCqNrGX_lYodiORKQrtRIr5CUZtudl-hTU",
+                "authDomain": "aor-election.firebaseapp.com",
+                'databaseURL': "https://aor-election-default-rtdb.firebaseio.com",
+                "projectId": "aor-election",
+                'storageBucket': "aor-election.appspot.com",
+                "messagingSenderId": "173943917022",
+                "appId": "1:173943917022:web:be60dff753ea723038b54f",
+                "measurementId": "G-XRSDKRXW2G"
                 }
             firebase = pyrebase.initialize_app(firebaseConfig)
             
