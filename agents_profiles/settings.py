@@ -124,6 +124,11 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = Path.joinpath(BASE_DIR, 'staticfiles')
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    '/var/www/static/',
+]
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home'

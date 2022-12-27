@@ -14,6 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.urls import path
 from users import views as user_views
@@ -29,4 +31,4 @@ urlpatterns = [
     path('preliminary/', user_views.preliminary, name='preliminary'),
     path('sendPreliminary/', user_views.sendPreliminary, name='sendPreliminary'),
     # path('submited/', user_views.submission, name='submission')
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
