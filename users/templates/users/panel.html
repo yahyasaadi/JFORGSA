@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Preliminary Results</title>
+	
+</head>
+<body>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto+Condensed:wght@700&family=Roboto:wght@300;400;500;600;700&display=swap');
+
+
+* {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-white: #f3f3f3;
+  --color-darkorange: #e26a2c;
+  --color-darkorange-alpha: rgba(210, 105, 30, 0.8);
+  --color-darkorange-alpha1: rgba(210, 105, 30, 1);
+  --color-green: #989e65;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+h2 {
+  margin: 20px 0 10px 0;
+  font-size: 1.7rem;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-white);
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: var(--color-darkorange);
+  background-image: linear-gradient(
+      115deg,
+      rgba(58, 58, 158, 0.8),
+      rgba(255, 127, 80, 0.7)
+    ),
+    url(https://images.pexels.com/photos/4158/apple-iphone-smartphone-desk.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+h1 {
+  font-weight: 400;
+  line-height: 1.2;
+}
+.container {
+  width: 100%;
+  margin: 3.125rem auto 0 auto;
+}
+
+/*body {
+  background-color: #fff9f9;
+  min-height: 700px;
+  minwidth: 700px;
+  height: 100vh;
+  width: 100vw;
+  background-color:hsla(0,100%,88%,1);
+  background-image:
+radial-gradient(at 80% 0%, hsla(189,100%,56%,1) 0px, transparent 50%),
+radial-gradient(at 0% 50%, hsla(355,100%,93%,1) 0px, transparent 50%),
+radial-gradient(at 80% 50%, hsla(340,100%,76%,1) 0px, transparent 50%),
+radial-gradient(at 0% 100%, hsla(269,100%,77%,1) 0px, transparent 50%),
+radial-gradient(at 0% 0%, hsla(343,100%,76%,1) 0px, transparent 50%);
+}
+		body {
+  font-family: system-ui;
+  background: #975C8D;
+  color: white;
+  text-align: center;
+}*/
+
+
+
+table{ 
+	width: 900px; 
+	border-collapse: collapse; 
+	margin:50px auto;
+	}
+th{ 
+	background: #3498db; 
+	color: white; 
+	font-weight: bold; 
+	}
+
+td, th { 
+	padding: 10px; 
+	border-bottom: 1px solid #ccc;
+	text-align: center; 
+	font-size: 18px;
+	}
+
+.tbl-accordion-header a {
+	color: #28c76f !important;
+}
+
+.tbl-accordion-body {
+	display: none;
+}
+
+.tbl-accordion-body td {
+  border-bottom: 0px; 
+}
+
+.tbl-accordion-body tr:last-child {
+  border-bottom: 1px solid #ccc; 
+}
+.modal{
+	visibility: hidden;
+	width:400px;
+	height:380px;
+	z-index: 8;
+	color:blue;
+	background: var(--color-darkorange-alpha1);
+	position: fixed;
+	top: 10px;
+	margin:20px 200px;
+	padding: 4% 3%;
+	border-radius: 25px;
+}
+/*form {
+  background: var(--color-darkorange-alpha);
+  padding: 2.5rem 0.625rem;
+  border-radius: 0.25rem;
+}*/
+.form-control {
+  display: block;
+  width: 100%;
+  height: 2.375rem;
+  padding: 0.375rem 0.75rem;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.modal input{
+  border-radius: 10px;
+  height: 40px;
+  padding: 10px;
+  outline: none;
+}
+.first{
+	width: 40px;
+	height: 20px;
+	color: black;
+	position: absolute;
+	top:10px;
+	color: whitesmoke;
+	border: 1px solid wheat;
+	background-color: #0A2647;
+/*	padding: 4% 20% 4% 20%;*/
+	margin: 0 0 0 320px;
+}
+.button{
+	margin: 15px 0px;
+	padding: 20px;
+	font-size: 18px;
+	background-color: teal;
+	color: whitesmoke;
+	border: none;
+
+}
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 50%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #61876E;
+}
+.first,.button{
+	cursor: pointer;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* formulario */
+
+/*form {
+  background: var(--color-darkorange-alpha);
+  padding: 2.5rem 0.625rem;
+  border-radius: 0.25rem;
+}*/
+.right{
+	float: right;
+}
+.left{
+	float: left;
+	margin-left: 35px;
+}
+.header {
+  padding: 0 0.625rem;
+  margin-bottom: 1.875rem;
+}
+.titles{
+  width: 100%;
+  position: fixed;
+  margin-top: -240px;
+  background-color: #2a72b9;
+  height: 200px;
+}
+.content{
+  margin-top: 240px;
+}
+	</style>
+<div class="container">
+  <div class="titles"><h2 class="text-center">Preliminary Results</h2>
+	<div class="text-center">
+	<input type="text"  id="myInput" onkeyup="myFunction()" placeholder="Search Ward or Polling Station" style="border-radius: 24px;" title="Type in a Coordinator's name">
+	</div>
+</div>
+ 	<div class="content">
+	<table id="myTable">
+	<tr>
+		    <th>Polling Station</th>
+		    <th>Stream</th>
+		    <th>Agent Name</th>
+		    <th>Time Sent</th>
+		    <th>Hon. Nassir Dolal</th>
+		    <th>Hon. Abdikarim Osman</th>
+		    <th>Hon. Dekow Barrow</th>
+		    <th>Hon. Abdifeisal Amin</th>
+		    <th>Hon. Ibrahim Malow</th>
+		</tr>
+		  {% for item in preliminary %}
+		  <tr>	
+		    <td>{{item.ward}} : {{item.pollingStation}}</td>
+		    <td>{{item.stream}}</td>
+		    <td>{{item.fullname}}</td>
+		    <td>{{item.time}}</td>
+		    <td class="dolal">{{item.dolal}}</td>
+		    <td class="oosman">{{item.osman}}</td>
+		    <td class="dekow">{{item.dekow}}</td>
+		    <td class="feisal">{{item.feisal}}</td>
+		    <td class="malow">{{item.malow}}</td>
+		</tr>
+		{%endfor%}
+    <tr style="background-color: skyblue; color:white">
+      <td colspan="4">Total</td>
+      <td id="total4dolal"></td>
+      <td id="total4osman"></td>
+      <td id="total4dekow"></td>
+      <td id="total4feisal"></td>
+      <td id="total4malow"></td>
+    </tr>
+	</table>
+</div>
+</div>
+	<script>
+
+// Dolal total
+const allInDolal = document.querySelectorAll('.dolal');
+var total = []
+for (const element of allInDolal) {
+  console.log(element.innerHTML);
+  total.push(parseInt(element.innerHTML))
+}
+var dolalSum = total.reduce((a,b)=> a+b, 0)
+console.log(dolalSum)
+document.getElementById('total4dolal').innerHTML = dolalSum
+
+
+// Osman total
+const allInOsman = document.querySelectorAll('.oosman');
+var total = []
+for (const element of allInOsman) {
+  console.log(element.innerHTML);
+  total.push(parseInt(element.innerHTML))
+}
+var osmanSum = total.reduce((a,b)=> a+b, 0)
+console.log(osmanSum)
+document.getElementById('total4osman').innerHTML = osmanSum
+
+
+// Dekow total
+const allInDekow = document.querySelectorAll('.dekow');
+var total = []
+for (const element of allInDekow) {
+  console.log(element.innerHTML);
+  total.push(parseInt(element.innerHTML))
+}
+var dekowSum = total.reduce((a,b)=> a+b, 0)
+console.log(dekowSum)
+document.getElementById('total4dekow').innerHTML = dekowSum
+
+// Feisal total
+const allInFeisal = document.querySelectorAll('.feisal');
+var total = []
+for (const element of allInFeisal) {
+  console.log(element.innerHTML);
+  total.push(parseInt(element.innerHTML))
+}
+var feisalSum = total.reduce((a,b)=> a+b, 0)
+console.log(feisalSum)
+document.getElementById('total4feisal').innerHTML = feisalSum
+
+
+// Malow total
+const allInMalow = document.querySelectorAll('.malow');
+var total = []
+for (const element of allInMalow) {
+  console.log(element.innerHTML);
+  total.push(parseInt(element.innerHTML))
+}
+var malowSum = total.reduce((a,b)=> a+b, 0)
+console.log(malowSum)
+document.getElementById('total4malow').innerHTML = malowSum
+	
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+	</script>
+</body>
+</html>

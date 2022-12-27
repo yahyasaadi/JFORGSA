@@ -1,0 +1,27 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+
+<h1>Preliminary Results</h1>
+
+<form action="{% url 'sendPreliminary' %}" method="post">
+    {% csrf_token %}
+    <h3>Polling Station: <strong>{{profile.pollingStation}}</strong>, Stream: <strong>{{profile.stream}}</strong></h3>
+    <input type="hidden" name="pollingStation" value="{{profile.pollingStation}}">
+    <input type="hidden" name="ward" value="{{profile.ward}}">
+    <input type="hidden" name="stream" value="{{profile.stream}}">
+    <input type="hidden" name="fullname" value="{{profile.fullname}}">
+    <label for="">Hon. Nassir Mohamed</label>
+    <input class="form-control" type="number" name="dolal"><br>
+    <label for="">Hon. Abdikarim Osman</label>
+    <input class="form-control" type="number" name="osman"><br>
+    <label for="">Hon. Dekow Mohamed</label>
+    <input class="form-control" type="number" name="dekow"><br>
+    <label for="">Hon. Ibrahim Malow</label>
+    <input class="form-control" type="number" name="malow"><br>
+    <label for="">Hon. Abdifeisal</label>
+    <input class="form-control" type="number" name="feisal"><br>
+    <input class="form-control" type="submit" value="Submit" name="submit">
+</form>
+
+{% endblock content %}

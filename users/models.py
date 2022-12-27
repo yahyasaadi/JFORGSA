@@ -43,11 +43,29 @@ class Vote(models.Model):
     def __str__(self) -> str:
         return self.pollingStation + ' -- ' + self.ward
     
+
+class Preliminary(models.Model):
+    ward = models.CharField(max_length=100)
+    pollingStation = models.CharField(max_length=100)
+    fullname = models.CharField(max_length=100,null=True)
+    time = models.CharField(max_length=100,null=True)
+    stream = models.IntegerField()
+    osman = models.IntegerField()
+    dolal = models.IntegerField()
+    dekow = models.IntegerField()
+    malow = models.IntegerField()
+    feisal = models.IntegerField()
     
+    def __str__(self) -> str:
+        return self.pollingStation
+
 
 class ProfileAdmin(admin.ModelAdmin):
     search_fields = ['id_number', 'fullname', 'pollingStation','phone']
     
+
+class PreliminaryAdmin(admin.ModelAdmin):
+    search_fields = ['fullname', 'ward', 'pollingStation','time']
 
 class VoteAdmin(admin.ModelAdmin):
     search_fields = ['pollingStation', 'ward']

@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import HttpResponse
 from .forms import UserRegisterForm, ProfileUpdateForm, VoteForm
-from .models import Profile, Vote
+from .models import Profile, Vote,Preliminary
 import pyrebase
 import time
 import datetime
@@ -41,14 +42,15 @@ def home(request):
                             rejectedObj=rejectedObj, disputed=disputed, valid=valid, jofle=jofle, major=dekow, osman=osman,feisal=feisal,muhiadin=muhiadin,malow=malow)
             new_vote.save()
             firebaseConfig = {
-                "apiKey": "AIzaSyCqNrGX_lYodiORKQrtRIr5CUZtudl-hTU",
-                "authDomain": "aor-election.firebaseapp.com",
-                'databaseURL': "https://aor-election-default-rtdb.firebaseio.com",
-                "projectId": "aor-election",
-                'storageBucket': "aor-election.appspot.com",
-                "messagingSenderId": "173943917022",
-                "appId": "1:173943917022:web:be60dff753ea723038b54f",
-                "measurementId": "G-XRSDKRXW2G"
+                'apiKey': "AIzaSyCqMdmrITPM8x4PdMqP5T9Hcmmj5IJPH6M",
+                'authDomain': "demoapp-607db.firebaseapp.com",
+                'databaseURL': "https://demoapp-607db-default-rtdb.asia-southeast1.firebasedatabase.app",
+                'projectId': "demoapp-607db",
+                'storageBucket': "demoapp-607db.appspot.com",
+                'messagingSenderId': "641799333572",
+                'appId': "1:641799333572:web:fd402ab5271f9fa4d6cb91",
+                'measurementId': "G-KPVXQKZ7KK"
+                # "serviceAccount":"serviceAccount.json"
                 }
             firebase = pyrebase.initialize_app(firebaseConfig)
             
@@ -119,8 +121,44 @@ def profile(request):
     return render(request, 'users/update.html', context)
 
 
-# def submission(request):
-#     vote = Vote.objects.filter(sender_username=request.user.username)
-#     print(vote)
-#     print(request.user.username)
-#     return render(request,'users/submitted.html',{'vote':vote})
+
+@login_required
+def preliminary(request):
+    user = request.user
+    profile = Profile.objects.get(user=user)
+
+    return render(request, 'users/preliminary.html',{'profile':profile})
+
+def sendPreliminary (request):
+    if request.method == 'POST':
+        ward = request.POST['ward']
+        pollingStation = request.POST['pollingStation']
+        stream = request.POST['stream']
+        fullname = request.POST['fullname']
+        osman = request.POST['osman']
+        dolal = request.POST['dolal']
+        dekow = request.POST['dekow']
+        malow = request.POST['malow']
+        feisal = request.POST['feisal']
+        new_preliminary = Preliminary(pollingStation=pollingStation,time=time.ctime(),ward=ward,stream=stream,fullname=fullname,osman=osman,dolal=dolal,dekow=dekow,malow=malow,feisal=feisal)
+        new_preliminary.save()
+        messages.success(request, f'You have sent your preliminary result at: {time.ctime()}')
+        return redirect('home')
+    else:
+        return redirect('preliminary')
+
+
+def panel(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        
+        if ((username=='Jofle2023admin') and password=='Jofle4GSA2023'):
+            preliminary= Preliminary.objects.all()
+            return render(request, 'users/panel.html',{'preliminary':preliminary})
+        else:
+            return render(request,'users/login1.html')
+    else:
+        return render(request,'users/login1.html')
+    
+    

@@ -26,13 +26,20 @@
      {% if user.is_authenticated %}
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
             <div class="container">
-                <a href="{% url 'home' %}" class="navbar-brand">Agents</a>
+                
+                <button type="button" class="btn btn-primary"><a style="font-size: 15px;color: white;" href="{% url 'preliminary' %}" class="navbar-brand">Preliminary</a></button>
+                
+                <button type="button" class="btn btn-success"><a href="{% url 'home' %}" style="color:white ;font-weight:bold;" class="navbar-brand">Final Results</a></button>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="{% url 'preliminary' %}" class="nav-link">Preliminary</a>
+                        </li>
                         <li class="nav-item">
                             <a href="{% url 'home' %}" class="nav-link">Home</a>
                         </li>
