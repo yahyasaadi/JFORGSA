@@ -35,11 +35,11 @@ def home(request):
             osman = request.POST['osman']
             feisal = request.POST['feisal']
             malow = request.POST['malow']
-            muhiadin = request.POST['muhiadin']
+            # muhiadin = request.POST['muhiadin']
             # print(ward, pollingStation, valid, osman)
             print(f'sender_username: {sender_username}')
             new_vote = Vote(sender_username=sender_username,ward=ward, pollingStation=pollingStation,stream=stream, registerdVoters=registerdVoters, rejected=rejected,
-                            rejectedObj=rejectedObj, disputed=disputed, valid=valid, jofle=jofle, major=dekow, osman=osman,feisal=feisal,muhiadin=muhiadin,malow=malow)
+                            rejectedObj=rejectedObj, disputed=disputed, valid=valid, jofle=jofle, major=dekow, osman=osman,feisal=feisal,muhiadin=0,malow=malow)
             new_vote.save()
             firebaseConfig = {
                 'apiKey': "AIzaSyCqMdmrITPM8x4PdMqP5T9Hcmmj5IJPH6M",
@@ -70,7 +70,7 @@ def home(request):
                 'osman': osman,
                 'malow': malow,
                 'feisal': feisal,
-                'muhiadin': muhiadin
+                'muhiadin': 0
             }
             
             if name.role == 'pollingAgent':
