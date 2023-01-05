@@ -15,7 +15,9 @@ import datetime
 
 @login_required
 def home(request):
-    name = Profile.objects.get(id=request.user.id)
+    # name = Profile.objects.get(id=request.user.id)
+    user = request.user
+    name = Profile.objects.get(user=user)
     vote = Vote.objects.filter(sender_username=request.user.username)
     if vote:
         return render(request,'users/submitted.html',{'vote':vote})
@@ -37,7 +39,7 @@ def home(request):
             malow = request.POST['malow']
             # muhiadin = request.POST['muhiadin']
             # print(ward, pollingStation, valid, osman)
-            print(f'sender_username: {sender_username}')
+            # print(f'sender_username: {sender_username}')
             new_vote = Vote(sender_username=sender_username,ward=ward, pollingStation=pollingStation,stream=stream, registerdVoters=registerdVoters, rejected=rejected,
                             rejectedObj=rejectedObj, disputed=disputed, valid=valid, jofle=jofle, major=dekow, osman=osman,feisal=feisal,muhiadin=0,malow=malow)
             new_vote.save()
@@ -80,7 +82,7 @@ def home(request):
                 
             # result = firebase.database().ref(f"votes/{pollingStation}").setValue(data)
 
-            print(result)
+            # print(result)
             return render(request, 'users/confirm_votes.html',{'name':name})
         else:
             return render(request, 'users/home.html', {'name':name})
